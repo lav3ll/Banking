@@ -116,7 +116,6 @@ const formatMovementDate = function (date, locale) {
     Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
 
   const daysPassed = calcDaysPassed(new Date(), date);
-  console.log(daysPassed);
 
   if (daysPassed === 0) return 'Today';
   if (daysPassed === 1) return 'Yesterday';
@@ -131,15 +130,6 @@ const options2 = {
   currency: 'EUR',
   // useGrouping: false,
 };
-
-const num = 2424242;
-console.log('US:', new Intl.NumberFormat('en-US', options2).format(num));
-console.log('Germany:', new Intl.NumberFormat('de-DE', options2).format(num));
-console.log('Syria:', new Intl.NumberFormat('ar-SY', options2).format(num));
-console.log(
-  'Browser:',
-  new Intl.NumberFormat(navigator.language, options2).format(num)
-);
 
 const formatCur = function (value, locale, currency) {
   return new Intl.NumberFormat(locale, {
@@ -281,7 +271,6 @@ btnLogin.addEventListener('click', function (e) {
   );
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    console.log('login');
     ///Disaplay UI and Welcome message
 
     labelWelcome.textContent = `Welcome back, ${
@@ -405,7 +394,7 @@ btnClose.addEventListener('click', function (e) {
 let sorted = false;
 btnSort.addEventListener('click', function (e) {
   e.preventDefault();
-  displayMovements(currentAccount.movements, !sorted);
+  displayMovements(currentAccount, !sorted);
   sorted = !sorted;
 });
 
