@@ -109,7 +109,12 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const modal = document.querySelector('.modal');
+
 ///////////////////////////////////////////////// Functions
+const closeModal = function () {
+  modal.classList.add('hidden');
+};
 
 const formatMovementDate = function (date, locale) {
   const calcDaysPassed = (date1, date2) =>
@@ -265,7 +270,7 @@ let currentAccount, timer;
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submiting
   e.preventDefault();
-
+  closeModal();
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
   );
